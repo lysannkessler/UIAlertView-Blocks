@@ -15,7 +15,11 @@
 
 +(id)item
 {
-    return [self new];
+    id result = [self new];
+#if !__has_feature(objc_arc)
+    [result autorelease];
+#endif
+    return result;
 }
 
 +(id)itemWithLabel:(NSString *)inLabel
